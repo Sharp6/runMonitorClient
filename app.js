@@ -1,7 +1,8 @@
 var request = require('request');
+var piblaster = require('pi-blaster.js');
 
-var RED_GPIO_PIN = ;
-var GREEN_GPIO_PIN = ;
+var RED_GPIO_PIN = 17;
+var GREEN_GPIO_PIN = 18;
 
 function getStatus() {
 	request('https://runmonitor.herokuapp.com/check', function (error, response, body) {
@@ -45,7 +46,10 @@ function setRgbLed(color) {
 }
 
 function doAtInterval() {
-	console.log(getStatus());
+	var status = getStatus();
+	var color = convertStatusToColor(status);
+	setRgbLed(color);
+	console.log(color);
 }
 
 setInterval(doAtInterval, 1000);
