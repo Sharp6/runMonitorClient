@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "pi-blaster.js": "^0.1.1",
+    "request": "^2.62.0"
+  }
+}
